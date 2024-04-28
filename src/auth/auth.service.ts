@@ -19,7 +19,6 @@ export class AuthService {
     username: string;
   } | null> {
     const user = await this.usersService.findOne(username);
-    console.log('validateUser in authService %s', user);
     if (user && user.password === pass) {
       const { password, ...result } = user;
       return result;
@@ -33,24 +32,4 @@ export class AuthService {
       access_token: this.jwtService.sign(payload),
     };
   }
-
-  // create(createAuthDto: CreateAuthDto) {
-  //   return 'This action adds a new auth';
-  // }
-
-  // findAll() {
-  //   return `This action returns all auth`;
-  // }
-
-  // findOne(id: number) {
-  //   return `This action returns a #${id} auth`;
-  // }
-
-  // update(id: number, updateAuthDto: UpdateAuthDto) {
-  //   return `This action updates a #${id} auth`;
-  // }
-
-  // remove(id: number) {
-  //   return `This action removes a #${id} auth`;
-  // }
 }
